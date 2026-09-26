@@ -40,7 +40,10 @@ const workspaceSkillPath = path.join(ROOT_DIR, '.agents', 'skills', 'academic-un
 
 check('Root SKILL.md exists', fs.existsSync(rootSkillPath));
 check('Packaged skills/academic-unslop/SKILL.md exists', fs.existsSync(pkgSkillPath));
-check('Workspace .agents/skills/academic-unslop/SKILL.md exists', fs.existsSync(workspaceSkillPath));
+// .agents/skills/ is gitignored local authoring tooling — only check if present
+if (fs.existsSync(workspaceSkillPath)) {
+  check('Workspace .agents/skills/academic-unslop/SKILL.md exists (optional, local only)', true);
+}
 
 // 2. Encoding and BOM Checks
 console.log('\n\x1b[1m2. Encoding Purity & UTF-8 Integrity\x1b[0m');
