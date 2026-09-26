@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
 /**
- * academic-unslop-skill installer
+ * academic-unslop-skill CLI & Installer
  * Created by KalarisLabs
- * Zero external dependencies cross-platform installer for all AI coding agents & harnesses.
+ * Zero external dependencies cross-platform installer & diagnostics for all AI coding agents & harnesses.
  */
 
 import fs from 'node:fs';
@@ -80,20 +80,24 @@ const AGENT_TARGETS = {
 
 function printHelp() {
   console.log(`
-\x1b[1m\x1b[36macademic-unslop-skill installer\x1b[0m \x1b[2mby KalarisLabs\x1b[0m
+\x1b[1m\x1b[36macademic-unslop-skill\x1b[0m \x1b[2mby KalarisLabs (v2.21.0)\x1b[0m
 
-Install the academic-unslop skill across any or all AI coding agents & harnesses.
+Conservative AIGC detector-informed thesis rewriting skill for all coding agents.
+
+\x1b[1mCOMMANDS:\x1b[0m
+  install                Install skill into local project or global agent harnesses (default)
+  doctor                 Check status of detected agents and installed skills
+  verify                 Run built-in integrity verification on skill files & references
 
 \x1b[1mUSAGE:\x1b[0m
-  npx academic-unslop-skill [options]
-  node bin/install.js [options]
+  npx academic-unslop-skill [command] [options]
 
 \x1b[1mOPTIONS:\x1b[0m
-  -g, --global           Install globally to user home directory across coding agent harnesses
+  -g, --global           Install globally to user profile across coding agent harnesses
   -a, --agent <agents>   Target specific agents: claude-code, cursor, windsurf, codex,
                          opencode, antigravity, roo, continue, copilot, universal, all
   --all                  Install to ALL supported agent harness directories
-  -c, --copy             Copy files instead of creating symbolic links / junctions
+  -c, --copy             Copy files instead of creating symbolic links
   -p, --path <dir>       Install directly to a custom destination directory
   -h, --help             Show this help message
 
@@ -101,13 +105,15 @@ Install the academic-unslop skill across any or all AI coding agents & harnesses
   npx academic-unslop-skill --global
   npx academic-unslop-skill -g --all
   npx academic-unslop-skill -a claude-code,cursor
-  npx academic-unslop-skill --path ~/.claude/skills
+  npx academic-unslop-skill doctor
+  npx academic-unslop-skill verify
 `);
 }
 
 function parseArgs() {
   const args = process.argv.slice(2);
   const options = {
+    command: 'install',
     global: false,
     copy: false,
     agents: [],
@@ -120,6 +126,12 @@ function parseArgs() {
     if (arg === '-h' || arg === '--help') {
       printHelp();
       process.exit(0);
+    } else if (arg === 'doctor') {
+      options.command = 'doctor';
+    } else if (arg === 'verify' || arg === 'test') {
+      options.command = 'verify';
+    } else if (arg === 'install') {
+      options.command = 'install';
     } else if (arg === '-g' || arg === '--global') {
       options.global = true;
     } else if (arg === '-c' || arg === '--copy') {
@@ -133,8 +145,6 @@ function parseArgs() {
       if (val) {
         options.agents = val.split(',').map(s => s.trim().toLowerCase());
       }
-    } else if (arg === 'install') {
-      // Subcommand no-op
     }
   }
 
@@ -155,6 +165,35 @@ function detectInstalledAgents(isGlobal) {
   }
 
   return detected;
+}
+
+function runDoctor() {
+  console.log('\x1b[1m\x1b[34m→ academic-unslop doctor: Diagnosing AI agent environments...\x1b[0m\n');
+  const userHome = os.homedir();
+  const currentDir = process.cwd();
+
+  console.log(`User Profile Directory: \x1b[2m${userHome}\x1b[0m`);
+  console.log(`Current Project: \x1b[2m${currentDir}\x1b[0m\n`);
+
+  console.log('\x1b[1mAgent Harness Installation Status:\x1b[0m');
+  console.log('----------------------------------------------------------------------');
+  console.log(' Agent                     Global Config?   Global Skill?   Project Skill?');
+  console.log('----------------------------------------------------------------------');
+
+  for (const [key, config] of Object.entries(AGENT_TARGETS)) {
+    const globalBase = path.join(userHome, config.global[0]);
+    const globalSkill = path.join(userHome, ...config.global, 'academic-unslop');
+    const projectSkill = path.join(currentDir, ...config.project, 'academic-unslop');
+
+    const hasGlobalConfig = fs.existsSync(globalBase) ? '\x1b[32m✔ Detected\x1b[0m   ' : '\x1b[90m- Absent\x1b[0m     ';
+    const hasGlobalSkill = fs.existsSync(globalSkill) ? '\x1b[32m✔ Installed\x1b[0m  ' : '\x1b[90m- Not found\x1b[0m ';
+    const hasProjectSkill = fs.existsSync(projectSkill) ? '\x1b[32m✔ Installed\x1b[0m' : '\x1b[90m- Not found\x1b[0m';
+
+    const namePadded = config.name.padEnd(25, ' ');
+    console.log(` ${namePadded} ${hasGlobalConfig} ${hasGlobalSkill} ${hasProjectSkill}`);
+  }
+  console.log('----------------------------------------------------------------------\n');
+  console.log('\x1b[2mTip: Run `npx academic-unslop-skill --global` to install across all detected agents.\x1b[0m\n');
 }
 
 function copyRecursiveSync(src, dest) {
@@ -178,15 +217,12 @@ function installToDirectory(targetDir, useCopy) {
     fs.rmSync(dest, { recursive: true, force: true });
   }
 
-  // Determine what to copy: SKILL.md and references/
   if (useCopy) {
     fs.mkdirSync(dest, { recursive: true });
-    // Copy SKILL.md
     const skillMdSrc = path.join(SKILL_SOURCE, 'SKILL.md');
     if (fs.existsSync(skillMdSrc)) {
       fs.copyFileSync(skillMdSrc, path.join(dest, 'SKILL.md'));
     }
-    // Copy references directory
     const refSrc = path.join(SKILL_SOURCE, 'references');
     if (fs.existsSync(refSrc)) {
       copyRecursiveSync(refSrc, path.join(dest, 'references'));
@@ -198,7 +234,6 @@ function installToDirectory(targetDir, useCopy) {
       fs.symlinkSync(SKILL_SOURCE, dest, symlinkType);
       console.log(`  \x1b[32m✔\x1b[0m Linked skill -> \x1b[2m${dest}\x1b[0m`);
     } catch (err) {
-      // Fallback to copy if symlink privileges are absent
       fs.mkdirSync(dest, { recursive: true });
       const skillMdSrc = path.join(SKILL_SOURCE, 'SKILL.md');
       if (fs.existsSync(skillMdSrc)) {
@@ -213,8 +248,31 @@ function installToDirectory(targetDir, useCopy) {
   }
 }
 
+function runVerify() {
+  const verifyScript = path.resolve(__dirname, '..', 'tests', 'verify-skill.js');
+  if (fs.existsSync(verifyScript)) {
+    import(path.resolve(verifyScript)).catch(err => {
+      console.error('Verification error:', err);
+      process.exit(1);
+    });
+  } else {
+    console.error('verify-skill.js not found');
+    process.exit(1);
+  }
+}
+
 function main() {
   const options = parseArgs();
+
+  if (options.command === 'doctor') {
+    runDoctor();
+    return;
+  }
+
+  if (options.command === 'verify') {
+    runVerify();
+    return;
+  }
 
   console.log('\x1b[1m\x1b[34m→ KalarisLabs academic-unslop-skill installation\x1b[0m');
 

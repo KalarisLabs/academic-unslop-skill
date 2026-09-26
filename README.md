@@ -3,6 +3,9 @@
 [![Created by KalarisLabs](https://img.shields.io/badge/Author-KalarisLabs-blue.svg)](https://github.com/KalarisLabs)
 [![Skills Ecosystem](https://img.shields.io/badge/skills.sh-academic--unslop-blue.svg)](https://skills.sh)
 [![Agent Skills Spec](https://img.shields.io/badge/spec-agentskills.io-green.svg)](https://agentskills.io)
+[![CI](https://github.com/KalarisLabs/academic-unslop-skill/actions/workflows/ci.yml/badge.svg)](https://github.com/KalarisLabs/academic-unslop-skill/actions/workflows/ci.yml)
+[![CodeQL](https://github.com/KalarisLabs/academic-unslop-skill/actions/workflows/codeql.yml/badge.svg)](https://github.com/KalarisLabs/academic-unslop-skill/actions/workflows/codeql.yml)
+[![Security Policy](https://img.shields.io/badge/Security-Confidential%20Local-green.svg)](SECURITY.md)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Version: 2.21.0](https://img.shields.io/badge/Version-2.21.0-orange.svg)](#)
 
@@ -44,8 +47,11 @@ npx academic-unslop-skill --global
 # Install globally to every supported agent directory
 npx academic-unslop-skill -g --all
 
-# Install to custom directory
-npx academic-unslop-skill --path ~/.claude/skills
+# Check installation status across all agents on your machine
+npx academic-unslop-skill doctor
+
+# Run built-in integrity verification
+npx academic-unslop-skill verify
 ```
 
 Or install globally via npm:
@@ -76,6 +82,29 @@ git clone https://github.com/KalarisLabs/academic-unslop-skill.git .agents/skill
 
 ---
 
+## 💻 CLI Commands & Diagnostics
+
+The zero-dependency executable CLI (`academic-unslop` or `npx academic-unslop-skill`) provides built-in utilities:
+
+| Command | Syntax | Description |
+|---|---|---|
+| **Install** | `academic-unslop [options]` | Installs the skill into detected or specified agent harness directories. |
+| **Doctor** | `academic-unslop doctor` | Diagnoses your machine for installed agent harnesses and shows global/project installation status. |
+| **Verify** | `academic-unslop verify` | Runs the full 82-check automated test suite validating frontmatter, references, dimensions, and techniques. |
+
+### CLI Options
+
+| Flag | Shorthand | Description |
+|---|---|---|
+| `--global` | `-g` | Installs globally to user home profile across agent harness paths. |
+| `--agent <names>` | `-a` | Target specific agents (e.g., `-a claude-code,cursor,windsurf`). |
+| `--all` | | Installs to every recognized coding agent harness directory. |
+| `--copy` | `-c` | Forces file copy instead of symbolic links / directory junctions. |
+| `--path <dir>` | `-p` | Installs directly into a custom target directory. |
+| `--help` | `-h` | Displays usage instructions and examples. |
+
+---
+
 ## 🛡️ Target Platform Directory Matrix
 
 When installed with the `--global` (`-g`) option, `academic-unslop-skill` populates the appropriate global skill directories:
@@ -93,6 +122,29 @@ When installed with the `--global` (`-g`) option, `academic-unslop-skill` popula
 | **Continue** | `.continue/skills/` | `~/.continue/skills/` | Symlink / Copy |
 | **GitHub Copilot** | `.agents/skills/` | `~/.copilot/skills/` | Symlink / Copy |
 | **Universal (Cline/Zed/Amp)** | `.agents/skills/` | `~/.agents/skills/` | Symlink / Copy |
+
+---
+
+## 🤖 Agent Slash Commands & Trigger Phrases
+
+Once installed in your agent harness, the skill activates automatically upon detecting academic editing intent or through explicit prompts:
+
+### Slash Commands
+- `/academic-unslop`: Primary entrypoint for thesis revision and AI-risk diagnosis.
+- `/unslop`: Quick trigger for purging LLM tropes, inflation, and buzzwords.
+- `/thesis-unslop`: Targets specific chapters or sections for minimal-edit revision.
+
+### English Triggers
+- `"Reduce AI score of Chapter 4"`
+- `"Turnitin AI detected 42% on this chapter, revise with minimal edits"`
+- `"Audit this paper for AI-writing risk patterns"`
+- `"De-slop this literature review while preserving citations"`
+
+### Chinese Triggers (中文触发词)
+- `"降低这篇论文的AI率"` / `"降AI"`
+- `"降低AIGC检测率，不要改变实证数据"`
+- `"知网AIGC查重过高，进行微调改写"`
+- `"改写降AI，保留原意并锁定假设和参考文献"`
 
 ---
 
@@ -163,6 +215,17 @@ Following the `writing-for-agents` engineering doctrine, the repository separate
 
 ---
 
+## 🔒 Codebase Security & Academic Confidentiality
+
+We adhere to rigorous data privacy standards for scientific research:
+
+- **100% Local In-Harness Execution**: Text processing runs strictly within your local agent environment.
+- **Zero Third-Party Exfiltration**: No text is ever transmitted to external bypass servers or paraphrasing APIs.
+- **Automated Security Scanning**: Protected with automated CodeQL vulnerability analysis and cross-platform continuous integration.
+- Read our full policy in [`SECURITY.md`](SECURITY.md).
+
+---
+
 ## 🔄 Chapter-by-Chapter Closed-Loop Workflow
 
 ```text
@@ -196,13 +259,18 @@ Stage 5: Mandatory External Re-Test Stop
 
 ```
 academic-unslop-skill/
+├── .github/
+│   └── workflows/
+│       ├── ci.yml                     # Multi-platform CI (Ubuntu, Windows, macOS)
+│       └── codeql.yml                 # Automated CodeQL security analysis
 ├── .gitignore                         # Isolates local dev tooling & scratch tickets
 ├── LICENSE                            # MIT License (c) KalarisLabs
 ├── README.md                          # Multi-platform documentation
+├── SECURITY.md                        # Academic data privacy & security policy
 ├── package.json                       # npm manifest with bin and engines
 ├── install.sh                         # Standalone POSIX curl installer
 ├── bin/
-│   └── install.js                     # Zero-dependency cross-agent installer CLI
+│   └── install.js                     # Zero-dependency cross-agent CLI & installer
 ├── skills/
 │   └── academic-unslop/
 │       ├── SKILL.md                   # Core Agent Skill definition
