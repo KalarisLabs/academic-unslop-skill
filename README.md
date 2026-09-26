@@ -1,7 +1,8 @@
 # Academic Unslop Skill (`@kalarislabs/academic-unslop-skill`)
 
 [![Created by KalarisLabs](https://img.shields.io/badge/Author-KalarisLabs-blue.svg)](https://github.com/KalarisLabs)
-[![Skills Ecosystem](https://img.shields.io/badge/skills.sh-academic--unslop-blue.svg)](https://skills.sh)
+[![skills.sh](https://skills.sh/b/KalarisLabs/academic-unslop-skill)](https://skills.sh/KalarisLabs/academic-unslop-skill)
+[![Skills Ecosystem](https://img.shields.io/badge/skills.sh-academic--unslop-blue.svg)](https://skills.sh/KalarisLabs/academic-unslop-skill)
 [![Agent Skills Spec](https://img.shields.io/badge/spec-agentskills.io-green.svg)](https://agentskills.io)
 [![CI](https://github.com/KalarisLabs/academic-unslop-skill/actions/workflows/ci.yml/badge.svg)](https://github.com/KalarisLabs/academic-unslop-skill/actions/workflows/ci.yml)
 [![Security Review](https://github.com/KalarisLabs/academic-unslop-skill/actions/workflows/security-agents-review.yml/badge.svg)](https://github.com/KalarisLabs/academic-unslop-skill/actions/workflows/security-agents-review.yml)
@@ -21,7 +22,7 @@ Supports **Turnitin AI**, **CNKI AIGC (知网)**, minimal-edit revision, protect
 
 ## Universal Installation
 
-The skill is compatible with all AI coding agents and harnesses (Claude Code, Cursor, Windsurf, Codex, OpenCode, Google Antigravity, Roo Code, Continue, Universal/Cline/Zed).
+The skill is compatible with **25+ AI coding agents and harnesses** including Claude Code, Cursor, Windsurf, OpenAI Codex, OpenCode, Google Antigravity, Gemini CLI, Roo Code, Cline, Continue, GitHub Copilot, Trae AI, Kimi Code, Kiro, Factory AI, OpenHands, and more.
 
 ### Option 1: Via `skills.sh` / `npx skills` (Recommended)
 
