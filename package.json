@@ -12,13 +12,16 @@
     "bin/",
     "skills/",
     "references/",
+    ".claude-plugin/",
     "SKILL.md",
     "install.sh",
     "README.md",
     "LICENSE"
   ],
   "scripts": {
-    "test": "node tests/verify-skill.js",
+    "test": "node tests/verify-skill.js && node tests/security-audit.js",
+    "test:verify": "node tests/verify-skill.js",
+    "test:security": "node tests/security-audit.js",
     "install-global": "node bin/install.js --global",
     "install-project": "node bin/install.js"
   },

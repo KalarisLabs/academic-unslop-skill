@@ -1,0 +1,14 @@
+{
+  "$schema": "https://anthropic.com/schemas/claude-code-plugin.json",
+  "name": "academic-unslop-skill",
+  "version": "2.21.0",
+  "description": "Conservative AIGC detector-informed thesis rewriting skill for English and Chinese academic writing.",
+  "owner": "KalarisLabs",
+  "skills": [
+    {
+      "name": "academic-unslop",
+      "path": "skills/academic-unslop",
+      "description": "Analyze thesis text for AI-like patterns and revise passages through conservative, minimal edits."
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "name": "academic-unslop",
+  "version": "2.21.0",
+  "description": "Conservative AIGC detector-informed thesis rewriting skill for English and Chinese academic writing.",
+  "author": {
+    "name": "KalarisLabs",
+    "url": "https://github.com/KalarisLabs"
+  },
+  "homepage": "https://github.com/KalarisLabs/academic-unslop-skill",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/KalarisLabs/academic-unslop-skill.git"
+  },
+  "license": "MIT",
+  "keywords": [
+    "academic-writing",
+    "thesis-revision",
+    "aigc-detection",
+    "turnitin",
+    "cnki",
+    "agent-skill",
+    "academic-integrity"
+  ]
+}

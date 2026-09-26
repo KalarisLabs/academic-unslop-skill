@@ -4,6 +4,7 @@
 [![Skills Ecosystem](https://img.shields.io/badge/skills.sh-academic--unslop-blue.svg)](https://skills.sh)
 [![Agent Skills Spec](https://img.shields.io/badge/spec-agentskills.io-green.svg)](https://agentskills.io)
 [![CI](https://github.com/KalarisLabs/academic-unslop-skill/actions/workflows/ci.yml/badge.svg)](https://github.com/KalarisLabs/academic-unslop-skill/actions/workflows/ci.yml)
+[![Security Review](https://github.com/KalarisLabs/academic-unslop-skill/actions/workflows/security-agents-review.yml/badge.svg)](https://github.com/KalarisLabs/academic-unslop-skill/actions/workflows/security-agents-review.yml)
 [![CodeQL](https://github.com/KalarisLabs/academic-unslop-skill/actions/workflows/codeql.yml/badge.svg)](https://github.com/KalarisLabs/academic-unslop-skill/actions/workflows/codeql.yml)
 [![Security Policy](https://img.shields.io/badge/Security-Confidential%20Local-green.svg)](SECURITY.md)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -18,9 +19,9 @@ Supports **Turnitin AI**, **CNKI AIGC (知网)**, minimal-edit revision, protect
 
 ---
 
-## ⚡ Universal Installation
+## Universal Installation
 
-The skill is compatible with **all AI coding agents and harnesses** (Claude Code, Cursor, Windsurf, Codex, OpenCode, Google Antigravity, Roo Code, Continue, Universal/Cline/Zed).
+The skill is compatible with all AI coding agents and harnesses (Claude Code, Cursor, Windsurf, Codex, OpenCode, Google Antigravity, Roo Code, Continue, Universal/Cline/Zed).
 
 ### Option 1: Via `skills.sh` / `npx skills` (Recommended)
 
@@ -35,13 +36,20 @@ npx skills add KalarisLabs/academic-unslop-skill -g
 npx skills add KalarisLabs/academic-unslop-skill -a claude-code -a cursor -y
 ```
 
-### Option 2: Via `npm` / `npx` (with `--global` option)
+### Option 2: Via Claude Code Plugin Marketplace
+
+```bash
+# Official Claude Code plugin registration
+claude plugin add KalarisLabs/academic-unslop-skill
+```
+
+### Option 3: Via `npm` / `npx` (with `--global` option)
 
 ```bash
 # Direct run via npx (interactive auto-detection)
 npx academic-unslop-skill
 
-# Install globally across ALL coding agent harnesses on your machine
+# Install globally across all coding agent harnesses on your machine
 npx academic-unslop-skill --global
 
 # Install globally to every supported agent directory
@@ -60,7 +68,7 @@ npm install -g academic-unslop-skill
 academic-unslop-skill --global
 ```
 
-### Option 3: Standalone `curl` / `bash` (Zero Dependencies)
+### Option 4: Standalone `curl` / `bash` (Zero Dependencies)
 
 ```bash
 # Install to current project
@@ -70,7 +78,7 @@ curl -fsSL https://raw.githubusercontent.com/KalarisLabs/academic-unslop-skill/m
 curl -fsSL https://raw.githubusercontent.com/KalarisLabs/academic-unslop-skill/main/install.sh | bash -s -- --global
 ```
 
-### Option 4: Direct Git Clone
+### Option 5: Direct Git Clone
 
 ```bash
 # Claude Code (Project or Global)
@@ -82,7 +90,7 @@ git clone https://github.com/KalarisLabs/academic-unslop-skill.git .agents/skill
 
 ---
 
-## 💻 CLI Commands & Diagnostics
+## CLI Commands and Diagnostics
 
 The zero-dependency executable CLI (`academic-unslop` or `npx academic-unslop-skill`) provides built-in utilities:
 
@@ -105,7 +113,7 @@ The zero-dependency executable CLI (`academic-unslop` or `npx academic-unslop-sk
 
 ---
 
-## 🛡️ Target Platform Directory Matrix
+## Target Platform Directory Matrix
 
 When installed with the `--global` (`-g`) option, `academic-unslop-skill` populates the appropriate global skill directories:
 
@@ -125,7 +133,7 @@ When installed with the `--global` (`-g`) option, `academic-unslop-skill` popula
 
 ---
 
-## 🤖 Agent Slash Commands & Trigger Phrases
+## Agent Slash Commands and Trigger Phrases
 
 Once installed in your agent harness, the skill activates automatically upon detecting academic editing intent or through explicit prompts:
 
@@ -148,7 +156,7 @@ Once installed in your agent harness, the skill activates automatically upon det
 
 ---
 
-## 🎯 What This Skill Does
+## What This Skill Does
 
 The **AIGC Detector & Rewriter Skill** analyzes thesis text for structural and stylistic AI-writing patterns and revises selected high-risk passages through controlled, minimal edits.
 
@@ -173,7 +181,7 @@ never by regenerating whole paragraphs or chapters.
 
 ---
 
-## 🚦 Phase 7 Quality Gates (Gate A through Gate J)
+## Quality Gates (Gate A through Gate J)
 
 Every revised paragraph and chapter must pass all ten mandatory quality gates before output. If any gate fails, the revision is marked **Incomplete** and rolled back for rework:
 
@@ -192,7 +200,7 @@ Every revised paragraph and chapter must pass all ten mandatory quality gates be
 
 ---
 
-## 📚 Progressive Reference Architecture
+## Progressive Reference Architecture
 
 Following the `writing-for-agents` engineering doctrine, the repository separates core workflow orchestration (`SKILL.md`) from modular diagnostic and technique catalogues located in `references/`:
 
@@ -215,18 +223,23 @@ Following the `writing-for-agents` engineering doctrine, the repository separate
 
 ---
 
-## 🔒 Codebase Security & Academic Confidentiality
+## Codebase Security and Confidentiality
 
 We adhere to rigorous data privacy standards for scientific research:
 
 - **100% Local In-Harness Execution**: Text processing runs strictly within your local agent environment.
 - **Zero Third-Party Exfiltration**: No text is ever transmitted to external bypass servers or paraphrasing APIs.
-- **Automated Security Scanning**: Protected with automated CodeQL vulnerability analysis and cross-platform continuous integration.
+- **Automated Security Review Agents**: Continuous integration enforces five automated security review agents on all branches and pull requests:
+  - **Agent 1: Path Traversal Guard**: Prevents relative directory escaping and path traversal attacks during file copy or linking.
+  - **Agent 2: Shell Injection Guard**: Verifies shell variable quoting and ensures zero unsanitized `child_process.exec` calls.
+  - **Agent 3: Academic Confidentiality Guard**: Guarantees zero external network dependencies and enforces offline local processing.
+  - **Agent 4: ReDoS Analyzer**: Scans regex patterns to prevent catastrophic backtracking vulnerabilities.
+  - **Agent 5: Secret Leakage Guard**: Scans the codebase for API keys, personal access tokens, or private credentials.
 - Read our full policy in [`SECURITY.md`](SECURITY.md).
 
 ---
 
-## 🔄 Chapter-by-Chapter Closed-Loop Workflow
+## Chapter-by-Chapter Closed-Loop Workflow
 
 ```text
 User: "Reduce the AI detection score of Chapter 4"
@@ -255,14 +268,18 @@ Stage 5: Mandatory External Re-Test Stop
 
 ---
 
-## 🛠️ Repository Layout
+## Repository Layout
 
 ```
 academic-unslop-skill/
+├── .claude-plugin/                    # Claude Code plugin registration
+│   ├── plugin.json                    # Plugin manifest
+│   └── marketplace.json               # Marketplace catalog configuration
 ├── .github/
 │   └── workflows/
 │       ├── ci.yml                     # Multi-platform CI (Ubuntu, Windows, macOS)
-│       └── codeql.yml                 # Automated CodeQL security analysis
+│       ├── codeql.yml                 # Automated CodeQL security analysis
+│       └── security-agents-review.yml # 5-agent security review audit on PRs/branches
 ├── .gitignore                         # Isolates local dev tooling & scratch tickets
 ├── LICENSE                            # MIT License (c) KalarisLabs
 ├── README.md                          # Multi-platform documentation
@@ -286,21 +303,26 @@ academic-unslop-skill/
 │   └── chinese_text_ai_risk.md
 ├── SKILL.md                           # Root discovery entrypoint
 └── tests/
-    └── verify-skill.js                # Automated integrity test suite
+    ├── verify-skill.js                # Automated integrity test suite (82 checks)
+    └── security-audit.js              # 5-agent security review test suite (12 checks)
 ```
 
 ---
 
-## 🧪 Verification
+## Verification and Testing
 
-Run the automated repository test suite to verify YAML frontmatter validity, cross-reference integrity, technique mapping, and CLI installation behavior:
+Run the automated test suite to verify YAML frontmatter validity, cross-reference integrity, technique mapping, and CLI installation behavior:
 
 ```bash
+# Run skill specification and reference integrity tests (82 checks)
 npm test
+
+# Run 5-agent security review audit (12 checks)
+node tests/security-audit.js
 ```
 
 ---
 
-## 📄 License
+## License
 
 MIT © [KalarisLabs](https://github.com/KalarisLabs)
