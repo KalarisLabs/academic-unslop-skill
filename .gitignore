@@ -1,0 +1,21 @@
+# Dependencies & Builds
+node_modules/
+dist/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Internal Agent Development Tooling (Matt Pocock Skills & Scaffolding)
+# DO NOT COMMIT: These are local authoring and development tools, NOT repository deliverables.
+.skills.json
+skills-lock.json
+.agents/skills/
+.claude/skills/
+.scratch/
+
+# Agent Conversation Transcripts, Caches & Ephemeral State
+.gemini/
+.claude/
+*.task.*
+.DS_Store
+Thumbs.db

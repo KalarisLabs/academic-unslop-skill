@@ -1,0 +1,58 @@
+{
+  "name": "academic-unslop-skill",
+  "version": "1.0.0",
+  "description": "A conservative AIGC detector-informed thesis rewriting skill for English and Chinese academic writing by KalarisLabs.",
+  "type": "module",
+  "main": "bin/install.js",
+  "bin": {
+    "academic-unslop-skill": "bin/install.js",
+    "academic-unslop": "bin/install.js"
+  },
+  "files": [
+    "bin/",
+    "skills/",
+    "references/",
+    "SKILL.md",
+    "install.sh",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node tests/verify-skill.js",
+    "install-global": "node bin/install.js --global",
+    "install-project": "node bin/install.js"
+  },
+  "keywords": [
+    "agent-skills",
+    "skills",
+    "skills.sh",
+    "kalarislabs",
+    "claude-code",
+    "cursor",
+    "windsurf",
+    "codex",
+    "antigravity",
+    "opencode",
+    "academic-writing",
+    "thesis-rewriting",
+    "turnitin",
+    "cnki",
+    "unslop"
+  ],
+  "author": "KalarisLabs",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KalarisLabs/academic-unslop-skill.git"
+  },
+  "bugs": {
+    "url": "https://github.com/KalarisLabs/academic-unslop-skill/issues"
+  },
+  "homepage": "https://github.com/KalarisLabs/academic-unslop-skill#readme",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
