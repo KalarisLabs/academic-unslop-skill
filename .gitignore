@@ -12,6 +12,7 @@ skills-lock.json
 .agents/skills/
 .claude/skills/
 .scratch/
+scratch/
 
 # Agent Conversation Transcripts, Caches & Ephemeral State
 .gemini/

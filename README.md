@@ -68,14 +68,18 @@ npm install -g @kalarislabs/academic-unslop-skill
 academic-unslop --global
 ```
 
-### Option 4: Standalone `curl` / `bash` (Zero Dependencies)
+### Option 4: Standalone Verified Shell Installation (Zero Dependencies)
 
 ```bash
-# Install to current project
-curl -fsSL https://raw.githubusercontent.com/KalarisLabs/academic-unslop-skill/main/install.sh | bash
+# Download the installer locally
+curl -fsSL https://raw.githubusercontent.com/KalarisLabs/academic-unslop-skill/main/install.sh -o install.sh
+chmod +x install.sh
 
-# Install globally across user agent directories
-curl -fsSL https://raw.githubusercontent.com/KalarisLabs/academic-unslop-skill/main/install.sh | bash -s -- --global
+# Install to current project
+./install.sh
+
+# Or install globally across user agent directories
+./install.sh --global
 ```
 
 ### Option 5: Direct Git Clone
@@ -98,14 +102,14 @@ The zero-dependency executable CLI (`academic-unslop` or `npx @kalarislabs/acade
 |---|---|---|
 | **Install** | `academic-unslop [options]` | Installs the skill into detected or specified agent harness directories. |
 | **Doctor** | `academic-unslop doctor` | Diagnoses your machine for installed agent harnesses and shows global/project installation status. |
-| **Verify** | `academic-unslop verify` | Runs the full 82-check automated test suite validating frontmatter, references, dimensions, and techniques. |
+| **Verify** | `academic-unslop verify` | Runs the full 90-check automated test suite validating frontmatter, Agent Skills spec compliance, references, dimensions, and techniques. |
 
 ### CLI Options
 
 | Flag | Shorthand | Description |
 |---|---|---|
 | `--global` | `-g` | Installs globally to user home profile across agent harness paths. |
-| `--agent <names>` | `-a` | Target specific agents (e.g., `-a claude-code,cursor,windsurf`). |
+| `--agent <names>` | `-a` | Target specific agents (e.g., `-a claude-code,cursor,trae,kimi`). |
 | `--all` | | Installs to every recognized coding agent harness directory. |
 | `--copy` | `-c` | Forces file copy instead of symbolic links / directory junctions. |
 | `--path <dir>` | `-p` | Installs directly into a custom target directory. |
@@ -115,7 +119,7 @@ The zero-dependency executable CLI (`academic-unslop` or `npx @kalarislabs/acade
 
 ## Target Platform Directory Matrix
 
-When installed with the `--global` (`-g`) option, `academic-unslop-skill` populates the appropriate global skill directories:
+When installed with the `--global` (`-g`) option, `@kalarislabs/academic-unslop-skill` populates the appropriate global skill directories across 25+ agent ecosystems:
 
 | Agent Harness | Project Directory | Global Directory (`-g`) | Linking Mode |
 |:---|:---|:---|:---:|
@@ -127,9 +131,25 @@ When installed with the `--global` (`-g`) option, `academic-unslop-skill` popula
 | **Google Antigravity** | `.agents/skills/` | `~/.gemini/antigravity/skills/` | Symlink / Copy |
 | **Gemini CLI** | `.agents/skills/` | `~/.gemini/skills/` | Symlink / Copy |
 | **Roo Code** | `.roo/skills/` | `~/.roo/skills/` | Symlink / Copy |
+| **Cline** | `.cline/skills/` | `~/.cline/skills/` | Symlink / Copy |
 | **Continue** | `.continue/skills/` | `~/.continue/skills/` | Symlink / Copy |
 | **GitHub Copilot** | `.agents/skills/` | `~/.copilot/skills/` | Symlink / Copy |
-| **Universal (Cline/Zed/Amp)** | `.agents/skills/` | `~/.agents/skills/` | Symlink / Copy |
+| **Factory AI (Droid)** | `.factory/skills/` | `~/.factory/skills/` | Symlink / Copy |
+| **Trae AI IDE** | `.trae/skills/` | `~/.trae/skills/` | Symlink / Copy |
+| **Kimi Code CLI** | `.kimi/skills/` | `~/.kimi/skills/` | Symlink / Copy |
+| **Qwen Code CLI** | `.qwen/skills/` | `~/.qwen/skills/` | Symlink / Copy |
+| **iFlow CLI** | `.iflow/skills/` | `~/.iflow/skills/` | Symlink / Copy |
+| **OpenHands** | `.openhands/skills/` | `~/.openhands/skills/` | Symlink / Copy |
+| **Kiro CLI** | `.kiro/skills/` | `~/.kiro/skills/` | Symlink / Copy |
+| **Charm Crush** | `.crush/skills/` | `~/.crush/skills/` | Symlink / Copy |
+| **Pi Coding Agent** | `.pi/skills/` | `~/.pi/skills/` | Symlink / Copy |
+| **Posit Assistant** | `.posit/skills/` | `~/.posit/skills/` | Symlink / Copy |
+| **Goose AI** | `.goose/skills/` | `~/.config/goose/skills/` | Symlink / Copy |
+| **Amp Code** | `.agents/skills/` | `~/.amp/skills/` | Symlink / Copy |
+| **Replit AI** | `.replit/skills/` | `~/.replit/skills/` | Symlink / Copy |
+| **Qoder CLI** | `.qoder/skills/` | `~/.qoder/skills/` | Symlink / Copy |
+| **OpenClaw** | `.openclaw/skills/` | `~/.openclaw/skills/` | Symlink / Copy |
+| **Universal Standard** | `.agents/skills/` | `~/.agents/skills/` | Symlink / Copy |
 
 ---
 

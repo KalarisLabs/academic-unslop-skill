@@ -123,6 +123,31 @@ try {
   }
 }
 
+// 9. Agent Skills Open Specification (agentskills.io) Compliance Checks
+console.log('\n\x1b[1m9. Agent Skills Open Specification (agentskills.io) Compliance Checks\x1b[0m');
+const rawSkillBuf = fs.readFileSync(rootSkillPath);
+const hasBOM = rawSkillBuf[0] === 0xef && rawSkillBuf[1] === 0xbb && rawSkillBuf[2] === 0xbf;
+assert(!hasBOM, 'SKILL.md has no UTF-8 BOM (pure UTF-8 per spec)');
+
+const nameMatch = skillContent.match(/name:\s*([^\r\n]+)/);
+assert(nameMatch && /^[a-z0-9]+(-[a-z0-9]+)*$/.test(nameMatch[1].trim()), 'name matches regex ^[a-z0-9]+(-[a-z0-9]+)*$');
+assert(nameMatch && nameMatch[1].trim().length <= 64, 'name length is <= 64 characters');
+
+const descMatch = skillContent.match(/description:\s*(?:>|\|)?\s*\r?\n([\s\S]*?)(?=\r?\n[a-z_]+:)/i);
+assert(descMatch !== null, 'description field is present and non-empty');
+if (descMatch) {
+  const normalizedDesc = descMatch[1].replace(/\r?\n\s*/g, ' ').trim();
+  assert(normalizedDesc.length <= 1024, `description length (${normalizedDesc.length} chars) <= 1024 chars limit`);
+}
+
+const hasMojibake = /â[€\x80-\xbf][\x80-\xbf]/.test(skillContent);
+assert(!hasMojibake, 'SKILL.md contains zero mojibake / encoding corruption');
+
+assert(skillContent.includes('降AI'), 'SKILL.md contains clean UTF-8 Chinese triggers');
+
+const workspaceSkillPath = path.join(ROOT_DIR, '.agents', 'skills', 'academic-unslop', 'SKILL.md');
+assert(fs.existsSync(workspaceSkillPath), '.agents/skills/academic-unslop/SKILL.md exists for workspace agents');
+
 // Final Summary
 console.log(`\n\x1b[1mVerification Summary: ${passedTests}/${totalTests} tests passed.\x1b[0m`);
 if (passedTests === totalTests) {

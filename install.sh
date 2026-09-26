@@ -66,8 +66,24 @@ elif [[ "$SCOPE" == "global" ]]; then
       "$HOME/.gemini/antigravity/skills"
       "$HOME/.gemini/skills"
       "$HOME/.roo/skills"
+      "$HOME/.cline/skills"
       "$HOME/.continue/skills"
       "$HOME/.copilot/skills"
+      "$HOME/.factory/skills"
+      "$HOME/.trae/skills"
+      "$HOME/.kimi/skills"
+      "$HOME/.qwen/skills"
+      "$HOME/.iflow/skills"
+      "$HOME/.openhands/skills"
+      "$HOME/.kiro/skills"
+      "$HOME/.crush/skills"
+      "$HOME/.pi/skills"
+      "$HOME/.posit/skills"
+      "$HOME/.config/goose/skills"
+      "$HOME/.amp/skills"
+      "$HOME/.replit/skills"
+      "$HOME/.qoder/skills"
+      "$HOME/.openclaw/skills"
     )
   else
     TARGETS=(
@@ -75,12 +91,13 @@ elif [[ "$SCOPE" == "global" ]]; then
       "$HOME/.agents/skills"
       "$HOME/.cursor/skills"
       "$HOME/.gemini/antigravity/skills"
+      "$HOME/.codex/skills"
     )
   fi
 else
   TARGETS=(
-    "./.claude/skills"
     "./.agents/skills"
+    "./.claude/skills"
   )
 fi
 

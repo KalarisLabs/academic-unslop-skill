@@ -11,6 +11,7 @@
   },
   "files": [
     "bin/",
+    "scripts/",
     "skills/",
     "references/",
     ".claude-plugin/",
@@ -20,9 +21,11 @@
     "LICENSE"
   ],
   "scripts": {
-    "test": "node tests/verify-skill.js && node tests/security-audit.js",
+    "test": "node scripts/spec-validator.js && node tests/verify-skill.js && node tests/security-audit.js",
+    "test:spec": "node scripts/spec-validator.js",
     "test:verify": "node tests/verify-skill.js",
     "test:security": "node tests/security-audit.js",
+    "doctor:audit": "npx -y @security.kalarislabs/skill-doctor scan skills/academic-unslop --fail-on critical",
     "install-global": "node bin/install.js --global",
     "install-project": "node bin/install.js"
   },

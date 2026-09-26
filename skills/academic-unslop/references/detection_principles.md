@@ -16,7 +16,7 @@ Commercial and academic AI detectors (including Turnitin AI, CNKI AIGC / 知网,
 ### Multi-Detector Convergence Principle
 Different detectors weight features differently:
 - **Turnitin AI**: Heavily sensitive to continuous AI-generated prose segments, uniform syntactic rhythm, and AI-typical connective phrases (*"it is worth noting that"*, *"plays a pivotal role"*).
-- **CNKI AIGC (知网)**: Aggregates continuous character spans (AI feature value) and heavily flags standardized Chinese academic boilerplate (e.g., front-loaded background clichés and back-loaded countermeasure templates).
+- **CNKI AIGC (知网)**: Aggregates continuous character spans (AI feature value) and heavily flags standardized Chinese academic boilerplate (e.g., front-loaded background cliches and back-loaded countermeasure templates).
 - **GPTZero**: Evaluates burstiness and perplexity distributions at the document and paragraph tier.
 
 This skill targets the **underlying structural and syntactic vulnerabilities** that trigger external detectors across the board, rather than overfitting to any single system.

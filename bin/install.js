@@ -61,6 +61,11 @@ const AGENT_TARGETS = {
     project: ['.roo', 'skills'],
     global: ['.roo', 'skills']
   },
+  'cline': {
+    name: 'Cline',
+    project: ['.cline', 'skills'],
+    global: ['.cline', 'skills']
+  },
   'continue': {
     name: 'Continue',
     project: ['.continue', 'skills'],
@@ -71,8 +76,83 @@ const AGENT_TARGETS = {
     project: ['.agents', 'skills'],
     global: ['.copilot', 'skills']
   },
+  'factory': {
+    name: 'Factory AI / Droid',
+    project: ['.factory', 'skills'],
+    global: ['.factory', 'skills']
+  },
+  'trae': {
+    name: 'Trae AI IDE',
+    project: ['.trae', 'skills'],
+    global: ['.trae', 'skills']
+  },
+  'kimi': {
+    name: 'Kimi Code CLI',
+    project: ['.kimi', 'skills'],
+    global: ['.kimi', 'skills']
+  },
+  'qwen': {
+    name: 'Qwen Code CLI',
+    project: ['.qwen', 'skills'],
+    global: ['.qwen', 'skills']
+  },
+  'iflow': {
+    name: 'iFlow CLI',
+    project: ['.iflow', 'skills'],
+    global: ['.iflow', 'skills']
+  },
+  'openhands': {
+    name: 'OpenHands',
+    project: ['.openhands', 'skills'],
+    global: ['.openhands', 'skills']
+  },
+  'kiro': {
+    name: 'Kiro CLI',
+    project: ['.kiro', 'skills'],
+    global: ['.kiro', 'skills']
+  },
+  'crush': {
+    name: 'Charm Crush',
+    project: ['.crush', 'skills'],
+    global: ['.crush', 'skills']
+  },
+  'pi': {
+    name: 'Pi Coding Agent',
+    project: ['.pi', 'skills'],
+    global: ['.pi', 'skills']
+  },
+  'posit': {
+    name: 'Posit Assistant',
+    project: ['.posit', 'skills'],
+    global: ['.posit', 'skills']
+  },
+  'goose': {
+    name: 'Goose AI',
+    project: ['.goose', 'skills'],
+    global: ['.config', 'goose', 'skills']
+  },
+  'amp': {
+    name: 'Amp Code',
+    project: ['.agents', 'skills'],
+    global: ['.amp', 'skills']
+  },
+  'replit': {
+    name: 'Replit AI',
+    project: ['.replit', 'skills'],
+    global: ['.replit', 'skills']
+  },
+  'qoder': {
+    name: 'Qoder CLI',
+    project: ['.qoder', 'skills'],
+    global: ['.qoder', 'skills']
+  },
+  'openclaw': {
+    name: 'OpenClaw',
+    project: ['.openclaw', 'skills'],
+    global: ['.openclaw', 'skills']
+  },
   'universal': {
-    name: 'Universal / Cline / Zed / Amp',
+    name: 'Universal / Cross-Agent Standards (.agents/skills)',
     project: ['.agents', 'skills'],
     global: ['.agents', 'skills']
   }
@@ -95,7 +175,9 @@ Conservative academic thesis AI-writing risk reduction and unslop skill for all 
 \x1b[1mOPTIONS:\x1b[0m
   -g, --global           Install globally to user profile across coding agent harnesses
   -a, --agent <agents>   Target specific agents: claude-code, cursor, windsurf, codex,
-                         opencode, antigravity, roo, continue, copilot, universal, all
+                         opencode, antigravity, roo, cline, factory, trae, kimi, qwen,
+                         iflow, openhands, kiro, crush, pi, posit, goose, amp, replit,
+                         copilot, universal, all
   --all                  Install to ALL supported agent harness directories
   -c, --copy             Copy files instead of creating symbolic links
   -p, --path <dir>       Install directly to a custom destination directory
@@ -104,7 +186,7 @@ Conservative academic thesis AI-writing risk reduction and unslop skill for all 
 \x1b[1mEXAMPLES:\x1b[0m
   npx @kalarislabs/academic-unslop-skill --global
   npx @kalarislabs/academic-unslop-skill -g --all
-  npx @kalarislabs/academic-unslop-skill -a claude-code,cursor
+  npx @kalarislabs/academic-unslop-skill -a claude-code,cursor,trae,kimi
   npx @kalarislabs/academic-unslop-skill doctor
   npx @kalarislabs/academic-unslop-skill verify
 `);
