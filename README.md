@@ -1,8 +1,7 @@
 # Academic Unslop Skill (`@kalarislabs/academic-unslop-skill`)
 
 [![Created by KalarisLabs](https://img.shields.io/badge/Author-KalarisLabs-blue.svg)](https://github.com/KalarisLabs)
-[![skills.sh](https://skills.sh/b/KalarisLabs/academic-unslop-skill)](https://skills.sh/KalarisLabs/academic-unslop-skill)
-[![Skills Ecosystem](https://img.shields.io/badge/skills.sh-academic--unslop-blue.svg)](https://skills.sh/KalarisLabs/academic-unslop-skill)
+[![Skills Ecosystem](https://img.shields.io/badge/skills.sh-academic--unslop-black?logo=vercel)](https://skills.sh/kalarislabs/academic-unslop-skill/academic-unslop)
 [![Agent Skills Spec](https://img.shields.io/badge/spec-agentskills.io-green.svg)](https://agentskills.io)
 [![CI](https://github.com/KalarisLabs/academic-unslop-skill/actions/workflows/ci.yml/badge.svg)](https://github.com/KalarisLabs/academic-unslop-skill/actions/workflows/ci.yml)
 [![Security Review](https://github.com/KalarisLabs/academic-unslop-skill/actions/workflows/security-agents-review.yml/badge.svg)](https://github.com/KalarisLabs/academic-unslop-skill/actions/workflows/security-agents-review.yml)
@@ -12,6 +11,8 @@
 [![Version: 2.21.0](https://img.shields.io/badge/Version-2.21.0-orange.svg)](#)
 
 A conservative, AI detector-informed thesis rewriting skill for English and Chinese academic writing by **KalarisLabs**.
+
+**Zero-Slop Academic Writing for Autonomous Agents**: An integrated research laboratory, agent skill suite, and publication framework empowering autonomous agents to author rigorous, publication-grade academic papers with zero AI slop, zero hallucinated citations, and multi-detector risk scores below 10%. See [`research/`](research/README.md).
 
 Supports **Turnitin AI**, **CNKI AIGC (知网)**, minimal-edit revision, protected academic elements, qualitative/quantitative routing, and chapter-by-chapter AI-writing risk reduction **without detector-bypass claims**.
 
@@ -344,6 +345,12 @@ academic-unslop-skill/
 │   ├── rewrite_methods.md
 │   ├── qualitative_authorship_restoration.md
 │   └── chinese_text_ai_risk.md
+├── research/                          # Zero-Slop Academic Writing for Autonomous Agents
+│   ├── README.md                      # Research program overview and index
+│   ├── literature/                    # Surveys on detection mechanisms & agent writing
+│   ├── framework/                     # Zero-slop dual-engine architecture specification
+│   ├── skills/                        # Academic paper writing skills (Master-cai + Unslop)
+│   └── paper/                         # Target scientific paper, LaTeX manuscript & audit ledger
 ├── SKILL.md                           # Root discovery entrypoint
 └── tests/
     ├── verify-skill.js                # Automated integrity test suite (82 checks)
