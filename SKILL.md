@@ -1,6 +1,6 @@
 ﻿---
 name: academic-unslop
-title: AIGC Detector & Rewriter
+title: Academic Unslop
 description: >
   Detect AI-generated writing-risk patterns in English and Chinese thesis text, score
   paragraphs by external-detector-informed risk, and revise selected high-risk
@@ -323,7 +323,7 @@ references:
   - references/chinese_text_ai_risk.md
 ---
 
-# AIGC Detector & Rewriter Skill
+# Academic Unslop Skill
 
 ## Description
 Detect AI-writing risk patterns in English and Chinese thesis text â€” English text uses the conservative D1â€“D17 framework, Chinese text uses the Chinese-text AI-risk module plus shared structure-level checks, and mixed documents are routed by language segment â€” score paragraph-level and document-level AI risk, and rewrite high-risk sections by reducing shared external-detector-sensitive features such as repeated templates, uniform rhythm, mechanical reporting sequences, and over-smooth academic reasoning.
@@ -1870,7 +1870,7 @@ Phase 2 has two required substeps:
 
 Phase 2 is not complete until both 2a and 2b are completed.
 
-For each English-route paragraph, score against the 17 AI-trace dimensions below. For Chinese-route paragraphs, do not use the English D1â€“D17 table; instead use these fixed evidence fields (see also Language Routing): (1) ä¸­æ–‡æ¨¡æ¿çŸ­è¯­å‘½ä¸­; (2) ä¸­æ–‡é«˜é¢‘è¿žæŽ¥/æ”¶æŸæ¨¡å¼; (3) æ— ä¾æ®å¤¸å¼ è¯æˆ–ç©ºæ³›ä»·å€¼åˆ¤æ–­; (4) æœ¯è¯­/æ•°æ®/å¼•ç”¨ä¿æŠ¤é¡¹; (5) æ®µè½æž¶æž„é£Žé™©; (6) è·¨æ®µé‡å¤ç»“æž„é£Žé™©; (7) æ–¹æ³•/ç»“æžœæŠ¥å‘Šåºåˆ—é£Žé™©; (8) å¤–éƒ¨æ£€æµ‹é«˜äº®è¯æ®; (9) chinese_paragraph_risk_estimate; (10) å¯¹åº”æ”¹å†™åŠ¨ä½œä¸ŽåŒæ®µå­—æ•°è¡¥å¿è®°å½•. For qualitative/mixed passages, add the D18â€“D21 supplement where applicable:
+For each English-route paragraph, score against the 17 AI-trace dimensions below. For Chinese-route paragraphs, do not use the English D1–D17 table; instead use these fixed evidence fields (see also Language Routing): (1) 句首模板与固定句式; (2) 高频连接/收束模板; (3) 绝对化夸大或空泛价值判断; (4) 术语/数据/引用保护项; (5) 段落架构风险; (6) 跨段平行结构风险; (7) 方法/结果报告序列风险; (8) 外部检测高亮证据; (9) chinese_paragraph_risk_estimate; (10) 对应改写动作与各段字数补足记录. For qualitative/mixed passages, add the D18–D21 supplement where applicable:
 
 1. Repetitive Sentence Starters (0-3.0)
 2. Formulaic Transitions and Connector Chains (0-3.0)

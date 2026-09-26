@@ -1,6 +1,6 @@
 # Domain Modeling & Terminology Guidelines
 
-**Domain**: AIGC Detector-Informed Academic Thesis Revision  
+**Domain**: Academic Thesis AI-Writing Risk Reduction & Unslop Revision  
 **Authority**: KalarisLabs
 
 ## Ubiquitous Language & Core Terminology

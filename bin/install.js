@@ -80,9 +80,9 @@ const AGENT_TARGETS = {
 
 function printHelp() {
   console.log(`
-\x1b[1m\x1b[36macademic-unslop-skill\x1b[0m \x1b[2mby KalarisLabs (v2.21.0)\x1b[0m
+\x1b[1m\x1b[36m@kalarislabs/academic-unslop-skill\x1b[0m \x1b[2mby KalarisLabs (v2.21.0)\x1b[0m
 
-Conservative AIGC detector-informed thesis rewriting skill for all coding agents.
+Conservative academic thesis AI-writing risk reduction and unslop skill for all coding agents.
 
 \x1b[1mCOMMANDS:\x1b[0m
   install                Install skill into local project or global agent harnesses (default)
@@ -90,7 +90,7 @@ Conservative AIGC detector-informed thesis rewriting skill for all coding agents
   verify                 Run built-in integrity verification on skill files & references
 
 \x1b[1mUSAGE:\x1b[0m
-  npx academic-unslop-skill [command] [options]
+  npx @kalarislabs/academic-unslop-skill [command] [options]
 
 \x1b[1mOPTIONS:\x1b[0m
   -g, --global           Install globally to user profile across coding agent harnesses
@@ -102,11 +102,11 @@ Conservative AIGC detector-informed thesis rewriting skill for all coding agents
   -h, --help             Show this help message
 
 \x1b[1mEXAMPLES:\x1b[0m
-  npx academic-unslop-skill --global
-  npx academic-unslop-skill -g --all
-  npx academic-unslop-skill -a claude-code,cursor
-  npx academic-unslop-skill doctor
-  npx academic-unslop-skill verify
+  npx @kalarislabs/academic-unslop-skill --global
+  npx @kalarislabs/academic-unslop-skill -g --all
+  npx @kalarislabs/academic-unslop-skill -a claude-code,cursor
+  npx @kalarislabs/academic-unslop-skill doctor
+  npx @kalarislabs/academic-unslop-skill verify
 `);
 }
 
@@ -274,7 +274,7 @@ function main() {
     return;
   }
 
-  console.log('\x1b[1m\x1b[34m→ KalarisLabs academic-unslop-skill installation\x1b[0m');
+  console.log('\x1b[1m\x1b[34m→ KalarisLabs @kalarislabs/academic-unslop-skill installation\x1b[0m');
 
   if (options.customPath) {
     const dest = path.resolve(options.customPath);

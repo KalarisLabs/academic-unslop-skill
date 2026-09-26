@@ -1,4 +1,4 @@
-# Academic Unslop Skill (`academic-unslop-skill`)
+# Academic Unslop Skill (`@kalarislabs/academic-unslop-skill`)
 
 [![Created by KalarisLabs](https://img.shields.io/badge/Author-KalarisLabs-blue.svg)](https://github.com/KalarisLabs)
 [![Skills Ecosystem](https://img.shields.io/badge/skills.sh-academic--unslop-blue.svg)](https://skills.sh)
@@ -10,7 +10,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Version: 2.21.0](https://img.shields.io/badge/Version-2.21.0-orange.svg)](#)
 
-A conservative, AIGC detector-informed thesis rewriting skill for English and Chinese academic writing by **KalarisLabs**.
+A conservative, AI detector-informed thesis rewriting skill for English and Chinese academic writing by **KalarisLabs**.
 
 Supports **Turnitin AI**, **CNKI AIGC (知网)**, minimal-edit revision, protected academic elements, qualitative/quantitative routing, and chapter-by-chapter AI-writing risk reduction **without detector-bypass claims**.
 
@@ -43,29 +43,29 @@ npx skills add KalarisLabs/academic-unslop-skill -a claude-code -a cursor -y
 claude plugin add KalarisLabs/academic-unslop-skill
 ```
 
-### Option 3: Via `npm` / `npx` (with `--global` option)
+### Option 3: Via `npm` / `npx` (Scoped Organization Package)
 
 ```bash
 # Direct run via npx (interactive auto-detection)
-npx academic-unslop-skill
+npx @kalarislabs/academic-unslop-skill
 
 # Install globally across all coding agent harnesses on your machine
-npx academic-unslop-skill --global
+npx @kalarislabs/academic-unslop-skill --global
 
 # Install globally to every supported agent directory
-npx academic-unslop-skill -g --all
+npx @kalarislabs/academic-unslop-skill -g --all
 
 # Check installation status across all agents on your machine
-npx academic-unslop-skill doctor
+npx @kalarislabs/academic-unslop-skill doctor
 
 # Run built-in integrity verification
-npx academic-unslop-skill verify
+npx @kalarislabs/academic-unslop-skill verify
 ```
 
 Or install globally via npm:
 ```bash
-npm install -g academic-unslop-skill
-academic-unslop-skill --global
+npm install -g @kalarislabs/academic-unslop-skill
+academic-unslop --global
 ```
 
 ### Option 4: Standalone `curl` / `bash` (Zero Dependencies)
@@ -92,7 +92,7 @@ git clone https://github.com/KalarisLabs/academic-unslop-skill.git .agents/skill
 
 ## CLI Commands and Diagnostics
 
-The zero-dependency executable CLI (`academic-unslop` or `npx academic-unslop-skill`) provides built-in utilities:
+The zero-dependency executable CLI (`academic-unslop` or `npx @kalarislabs/academic-unslop-skill`) provides built-in utilities:
 
 | Command | Syntax | Description |
 |---|---|---|
@@ -150,7 +150,7 @@ Once installed in your agent harness, the skill activates automatically upon det
 
 ### Chinese Triggers (中文触发词)
 - `"降低这篇论文的AI率"` / `"降AI"`
-- `"降低AIGC检测率，不要改变实证数据"`
+- `"降低AI检测率，不要改变实证数据"`
 - `"知网AIGC查重过高，进行微调改写"`
 - `"改写降AI，保留原意并锁定假设和参考文献"`
 
@@ -158,7 +158,7 @@ Once installed in your agent harness, the skill activates automatically upon det
 
 ## What This Skill Does
 
-The **AIGC Detector & Rewriter Skill** analyzes thesis text for structural and stylistic AI-writing patterns and revises selected high-risk passages through controlled, minimal edits.
+The **Academic Unslop Skill** analyzes thesis text for structural and stylistic AI-writing patterns and revises selected high-risk passages through controlled, minimal edits.
 
 ### Targeted Vulnerabilities
 - Repeated sentence openings (e.g., *"This study... This study..."*)
@@ -239,6 +239,25 @@ We adhere to rigorous data privacy standards for scientific research:
 
 ---
 
+## Getting Into Agent Skills Directories and Registries
+
+To list this repository in public agent skills directories and catalogs:
+
+1. **`skills.sh` / `agentskills.io`**:
+   - The repository layout conforms to the AgentSkills specification. Adding GitHub repository topics `agent-skills`, `skills`, and `claude-code` enables automatic indexing by the `skills.sh` crawler.
+   - Users can already install directly: `npx skills add KalarisLabs/academic-unslop-skill`.
+2. **Claude Code Plugin Marketplace**:
+   - Packaged with official plugin manifests [`.claude-plugin/plugin.json`](.claude-plugin/plugin.json) and [`.claude-plugin/marketplace.json`](.claude-plugin/marketplace.json).
+   - Installable immediately via `claude plugin add KalarisLabs/academic-unslop-skill`.
+3. **Cursor Directory (`cursor.directory`)**:
+   - Submit via `cursor.directory/submit` under category "Academic / Research".
+4. **NPM Scoped Organization Registry**:
+   - Configured as `@kalarislabs/academic-unslop-skill` with `access: public` in `publishConfig`.
+   - Run `npm publish --access public` after creating the `kalarislabs` npm organization.
+5. Read our complete maintainer guide in [`docs/registry-distribution.md`](docs/registry-distribution.md).
+
+---
+
 ## Chapter-by-Chapter Closed-Loop Workflow
 
 ```text
@@ -288,6 +307,9 @@ academic-unslop-skill/
 ├── install.sh                         # Standalone POSIX curl installer
 ├── bin/
 │   └── install.js                     # Zero-dependency cross-agent CLI & installer
+├── docs/
+│   ├── registry-distribution.md       # Directory indexing & marketplace distribution guide
+│   └── agents/                        # Domain models and triage specifications
 ├── skills/
 │   └── academic-unslop/
 │       ├── SKILL.md                   # Core Agent Skill definition

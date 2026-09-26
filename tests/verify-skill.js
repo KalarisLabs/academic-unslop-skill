@@ -33,7 +33,7 @@ console.log('\x1b[1m1. Package Manifest Checks\x1b[0m');
 const packageJsonPath = path.join(ROOT_DIR, 'package.json');
 assert(fs.existsSync(packageJsonPath), 'package.json exists');
 const pkg = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
-assert(pkg.name === 'academic-unslop-skill', 'package.json name is academic-unslop-skill');
+assert(pkg.name === '@kalarislabs/academic-unslop-skill', 'package.json name is @kalarislabs/academic-unslop-skill');
 assert(pkg.author === 'KalarisLabs', 'package.json author is KalarisLabs');
 assert(pkg.bin && pkg.bin['academic-unslop-skill'] === 'bin/install.js', 'package.json maps CLI binary');
 
